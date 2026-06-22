@@ -13,7 +13,6 @@ const uploadOncloudnary = async (filePath) => {
         if (!filePath) return null;
 
         //upload file on cloudnary
-
         const responce = await cloudinary.uploader.upload(filePath, {
             resource_type: "auto"
         });
@@ -24,3 +23,5 @@ const uploadOncloudnary = async (filePath) => {
         return null;
     }
 }
+
+export { uploadOncloudnary };

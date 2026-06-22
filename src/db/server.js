@@ -6,8 +6,8 @@ const app = express();
 
 const connectDB = async () => {
     try {
-        const connectionInstant = await mongoose.connect(`${process.env.MONGOODB_URL}/${DB_NAME}`)
-
+        // const connectionInstant = await mongoose.connect(`${process.env.MONGOODB_URL}/${DB_NAME}`)
+        const connectionInstant = await mongoose.connect("mongodb+srv://rahul:rahul143@cluster0.hrqdiqy.mongodb.net/?appName=Cluster0")
         console.log(`MongoDB connected !! DB host On ${connectionInstant.connection.host}`)
     } catch (error) {
         console.log("ERROR : ", error)

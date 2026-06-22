@@ -1,9 +1,23 @@
 import { Router } from "express";
 import { userRegister } from "../controllers/user.controller.js";
+import { upload } from "../middlewares/multer.middleware.js";
 
 const router = Router();
 
-router.route("/register").post(userRegister)
+router.route("/register").post(
+    //help to use file handling
+    upload.fields(
+        {
+            name: "avtar",
+            maxCount: 1
+        },
+        {
+            name: "coverImage",
+            maxCount: 1
+        }
+    ),
+    userRegister
+)
 
 router.get("/test", (req, res) => {
     res.send("User route working");
