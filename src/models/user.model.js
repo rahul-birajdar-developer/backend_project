@@ -25,7 +25,7 @@ const userSchema = new Schema(
             lowercase: true,
             index: true,
         },
-        avtar: {
+        avatar: {
             type: String,
             required: true,
         },
@@ -52,10 +52,10 @@ const userSchema = new Schema(
 );
 
 //password bcrypt method when user enter the password
-userSchema.pre("save", async function (next) {
-    if (!this.isModified("password")) return next();
+userSchema.pre("save", async function () {
+    if (!this.isModified("password")) return;
+
     this.password = await bcrypt.hash(this.password, 10);
-    next();
 });
 
 //cheak the password is correct or not
@@ -93,4 +93,4 @@ userSchema.methods.generateRefreshToken = function () {
 };
 
 
-export const User=mongoose.model("User",userSchema)
+export const User = mongoose.model("User", userSchema)

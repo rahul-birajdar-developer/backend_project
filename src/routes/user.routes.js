@@ -6,22 +6,18 @@ const router = Router();
 
 router.route("/register").post(
     //help to use file handling
-    upload.fields(
+    upload.fields([
         {
-            name: "avtar",
+            name: "avatar",
             maxCount: 1
         },
         {
             name: "coverImage",
             maxCount: 1
         }
-    ),
+    ]),
     userRegister
 )
-
-router.get("/test", (req, res) => {
-    res.send("User route working");
-});
 
 
 export default router;
